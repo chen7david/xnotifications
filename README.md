@@ -113,3 +113,33 @@ console.log(validation)
   ]
 }
 ```
+
+#### Usage in Express: Register on as middleware
+
+```js
+const xnotif = require('xnotifications')
+
+app.use(xnotif())
+``` 
+
+#### Usage in Express: Access in routes
+```js
+const someExpressRoute = (req, res, next) => {
+
+    // notifications
+    req.notify('invalid','username')
+
+    // alert
+    req.alert('invalid','username', [
+        {
+            label:'register', 
+            url:'/account/register/'
+        }
+    ])
+
+    // notifications
+    req.validation.load('invalid','username')
+    req.validation.load('invalid','password')
+
+}
+```
