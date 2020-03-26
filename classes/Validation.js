@@ -2,6 +2,7 @@ const Notification = require('./Notification')
 class Validation extends Notification {
     constructor(schema){
         super(schema)
+        this.state = 'validation'
         this.messages = []
     }
 
