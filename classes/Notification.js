@@ -11,6 +11,11 @@ class Notification {
         if(!template) throw(`"${id}" schema template is not defined!`)
         return template[this.lang](data)
     }
+
+    toJSON() {
+        delete this.schema
+        return this
+    }
 }
 
 module.exports = Notification
