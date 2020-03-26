@@ -1,7 +1,7 @@
 const { isObject } = require('./../utils/functions')
 
 class Schema {
-    constructor(schema){
+    constructor(){
         this.store = {}
     }
 
