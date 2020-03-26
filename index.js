@@ -3,56 +3,10 @@ const Validation = require('./classes/Validation')
 const Alert = require('./classes/Alert')
 const Schema = require('./classes/Schema')
 
-const dd = (val) => console.log(val)
-
-const schemax = new Schema()
-
-schemax.create('welcome', {
-    en: () => `hello there!`,
-    zh: () => `你好!`
-})
-
-schemax.create('invalid', {
-    en: (noun) => `invalid ${noun}!`,
-    zh: noun => `${noun}有误!`
-})
-
-const schemay = new Schema()
-
-schemay.create('welcomes', {
-    en: () => `hello there!`,
-    zh: () => `你好!`
-})
-
-schemay.create('invalids', {
-    en: (noun) => `invalid ${noun}!`,
-    zh: noun => `${noun}有误!`
-})
-
-const x = schemax.export()
-const y = schemay.export()
-const schema = new Schema()
-schema.merge({x,y})
-// dd(z)
-
-const notification = new Notification(schemax.export())
-// const validation = new Validation({})
-// const strnot = JSON.stringify(notification)
-// const strval = JSON.stringify(validation)
-// dd({notification, validation})
-// dd({strnot, strval})
-
-const validation = new Validation(schema.export())
-
-validation.load('invalid','username', 'username')
-validation.load('invalid','password', 'password')
-validation.load('invalid','userId', 'user_id')
-
-console.log(validation)
-
 exports = module.exports = (schema) => (req, res, next) => {
-    Notification,
-    Validation
+    req.notify = (id, data, state) => new Notification(schema).create(id, data, state)
+    req.alert = (id, data, action) => new Alert(schema).create(id, data, action)
+    req.validation = new Validation(schema)
 }
 
 exports.Notification = Notification
