@@ -25,7 +25,10 @@ const schema = builder.export()
 const alert = new Alert(schema)
 
 alert.create('invalid','username', [
-    {label:'register', url:'/account/register/'}
+    {
+        label:'register', 
+        url:'/account/register/'
+    }
 ])
 
 console.log(alert)
