@@ -42,13 +42,13 @@ const strval = JSON.stringify(validation)
 // dd({notification, validation})
 // dd({strnot, strval})
 
-const alert = new Alert(schema.export())
+const note = new Notification(schema.export())
 
-alert.create('invalid','username', [
-    {label:'register', url:'/account/register/'}
-])
+note.create('invalid','username')
+note.create('invalid','username', 'info')
 
-console.log(alert)
+
+console.log(note)
 
 exports = module.exports = (schema) => (req, res, next) => {
     Notification,

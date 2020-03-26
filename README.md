@@ -53,4 +53,38 @@ console.log(alert)
 }
 ```
 
+#### Usage: Creating Alert
+
+```js
+const note = new Notification(schema)
+
+note.create('invalid','username')
+
+const withSate = note.create('invalid','username', 'info')
+
+console.log(note)
+console.log(withSate)
+```
+
+
+```js 
+
+// output of note
+
+{
+  state: 'error',
+  lang: 'en',
+  timeout: 6000,
+  message: 'invalid username!'
+}
+
+// output of withSate
+
+{
+  state: 'info',
+  lang: 'en',
+  timeout: 6000,
+  message: 'invalid username!'
+}
+```
 
