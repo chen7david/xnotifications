@@ -117,9 +117,14 @@ console.log(validation)
 #### Usage in Express: Register on as middleware
 
 ```js
-const xnotif = require('xnotifications')
+const builder = new Schema()
 
-app.use(xnotif())
+// define shemas here ...
+
+const schema = builder.export()
+const notif = require('xnotifications')(schema)
+app.use(notif)
+
 ``` 
 
 #### Usage in Express: Access in routes
