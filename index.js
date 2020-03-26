@@ -7,6 +7,7 @@ exports = module.exports = (schema) => (req, res, next) => {
     req.notify = (id, data, state) => new Notification(schema).create(id, data, state)
     req.alert = (id, data, action) => new Alert(schema).create(id, data, action)
     req.validation = new Validation(schema)
+    next()
 }
 
 exports.Notification = Notification
