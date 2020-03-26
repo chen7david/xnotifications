@@ -7,7 +7,7 @@ class Notification {
     }
 
     render(id, data){
-        const template = this.store[id]
+        const template = this.schema[id]
         if(!template) throw(`"${id}" schema template is not defined!`)
         return template[this.lang](data)
     }

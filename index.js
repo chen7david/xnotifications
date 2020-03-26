@@ -2,6 +2,7 @@ const Notification = require('./classes/Notification')
 const Validation = require('./classes/Validation')
 const Alert = require('./classes/Alert')
 const Schema = require('./classes/Schema')
+
 const dd = (val) => console.log(val)
 
 const schemax = new Schema()
@@ -30,9 +31,9 @@ schemay.create('invalids', {
 
 const x = schemax.export()
 const y = schemay.export()
-const z = new Schema()
-z.merge({x,y})
-dd(z)
+const schema = new Schema()
+schema.merge({x,y})
+// dd(z)
 
 const notification = new Notification(schemax.export())
 const validation = new Validation({})
@@ -40,6 +41,14 @@ const strnot = JSON.stringify(notification)
 const strval = JSON.stringify(validation)
 // dd({notification, validation})
 // dd({strnot, strval})
+
+const alert = new Alert(schema.export())
+
+alert.create('invalid','username', [
+    {label:'register', url:'/account/register/'}
+])
+
+console.log(alert)
 
 exports = module.exports = (schema) => (req, res, next) => {
     Notification,
