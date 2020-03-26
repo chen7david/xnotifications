@@ -1,7 +1,7 @@
 const { isObject } = require('./../utils/functions')
 
 class Schema {
-    constructor(){
+    constructor(schema){
         this.store = {}
     }
 
@@ -21,6 +21,21 @@ class Schema {
         if(this.exists(id)) throw(`"${id}" schema is already defined!`)
         if(!isObject(definition)) throw(`definition must be of type object!`)
         this.store[id] = definition
+        return this
+    }
+
+    load(schema){
+        for (let [id, definition] of Object.entries(schema)) {
+            this.create(id, definition)
+        }
+        return this
+    }
+
+    merge(schemas){
+        if(!isObject(schemas)) throw(`schemas must be of type object!`)
+        for (let [id, schema] of Object.entries(schemas)) {
+            this.load(schema)
+        }
         return this
     }
 }
