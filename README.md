@@ -53,7 +53,7 @@ console.log(alert)
 }
 ```
 
-#### Usage: Creating Alert
+#### Usage: Creating Notification
 
 ```js
 const note = new Notification(schema)
@@ -88,3 +88,28 @@ console.log(withSate)
 }
 ```
 
+#### Usage: Creating Validation
+
+```js
+const validation = new Validation(schema)
+
+validation.load('invalid','username', 'username')
+validation.load('invalid','password', 'password')
+validation.load('invalid','userId', 'user_id')
+
+console.log(validation)
+```
+
+```js 
+// output of validation
+{
+  state: 'validation',
+  lang: 'en',
+  timeout: 6000,
+  messages: [
+    { message: 'invalid username!', key: 'username' },
+    { message: 'invalid password!', key: 'password' },
+    { message: 'invalid userId!', key: 'user_id' }
+  ]
+}
+```

@@ -36,19 +36,19 @@ schema.merge({x,y})
 // dd(z)
 
 const notification = new Notification(schemax.export())
-const validation = new Validation({})
-const strnot = JSON.stringify(notification)
-const strval = JSON.stringify(validation)
+// const validation = new Validation({})
+// const strnot = JSON.stringify(notification)
+// const strval = JSON.stringify(validation)
 // dd({notification, validation})
 // dd({strnot, strval})
 
-const note = new Notification(schema.export())
+const validation = new Validation(schema.export())
 
-note.create('invalid','username')
-note.create('invalid','username', 'info')
+validation.load('invalid','username', 'username')
+validation.load('invalid','password', 'password')
+validation.load('invalid','userId', 'user_id')
 
-
-console.log(note)
+console.log(validation)
 
 exports = module.exports = (schema) => (req, res, next) => {
     Notification,
