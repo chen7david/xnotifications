@@ -4,6 +4,12 @@ class Validation extends Notification {
         super(schema)
         this.state = 'validation'
         this.messages = []
+        
+    }
+
+    original(original){
+        this.original = original
+        return this
     }
 
     load(id, data, key){
